@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">AndroidLab2</string>
+    <string name="header_text">Hello World!</string>
+    <string name="image_description">Halloween Image</string>
+    <string name="btn_updateUI">Update</string>
+    <string name="enter_header_text">Enter Header Text</string>
+</resources>
