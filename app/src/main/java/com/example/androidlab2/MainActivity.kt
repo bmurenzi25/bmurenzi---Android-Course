@@ -1,6 +1,7 @@
 package com.example.androidlab2
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
@@ -12,6 +13,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -38,7 +40,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DrawUI()
 {
-    var headerText by remember { mutableStateOf(R.string.header_text) }
+    var headerText by remember { mutableStateOf("Hello World!") }
     var inputText by remember { mutableStateOf("") }
     var showSecondImage by remember { mutableStateOf(false) }
 
@@ -48,7 +50,7 @@ fun DrawUI()
         modifier = Modifier.padding(16.dp)
     ) {
         Text(
-            text = stringResource(id = R.string.header_text),
+            text = headerText,
 //            style = MaterialTheme.typography.titleLarge
         )
         Spacer(modifier = Modifier.height(48.dp))
@@ -61,11 +63,16 @@ fun DrawUI()
                 .aspectRatio(3f / 2f)
         )
         Column(
-            Modifier.padding(2.dp)
+            Modifier.padding(0.dp, 24.dp)
         ) {
             HeaderTextField(header = inputText, changed = { inputText = it })
             Spacer(modifier = Modifier.height(24.dp))
-            UpdateUI ({ headerText })
+            UpdateUI (inputText)
+            {
+                headerText = if (inputText.isNotBlank()) inputText else headerText
+                showSecondImage = !showSecondImage
+                inputText = ""
+            }
         }
     }
 }
@@ -83,15 +90,10 @@ fun HeaderTextField(header: String, changed: (String) ->Unit){
 }
 
 @Composable
-fun UpdateUI(clicked: () -> Unit){
+fun UpdateUI(inputText : String, clicked: () -> Unit){
     Button(onClick= clicked) {
         Text(stringResource(id = R.string.btn_updateUI))
     }
-}
-
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
 }
 
 @Preview(showBackground = true)
