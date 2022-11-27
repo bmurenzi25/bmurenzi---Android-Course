@@ -1,0 +1,16 @@
+
+<resources>
+    <string name="app_name">Book</string>
+
+    <string name="addToDo">Add ToDo Item</string>
+    <string name="title">Title</string>
+    <string name="time">Time</string>
+    <string name="add">Add</string>
+    <string name="addedToDO">ToDo item added</string>
+    <string name="cancel">Cancel</string>
+
+    <string name="delete">Delete ToDo?</string>
+    <string name="deleteItem">ToDo item deleted</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+</resources>
