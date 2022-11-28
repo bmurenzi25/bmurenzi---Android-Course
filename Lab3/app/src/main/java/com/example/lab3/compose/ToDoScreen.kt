@@ -171,10 +171,13 @@ fun ToDoItem(
             modifier = Modifier.padding(16.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Checkbox(checked = isComplete, onCheckedChange = {
-                isComplete = it
-                markComplete(item)
-            })
+            Checkbox(
+                checked = isComplete,
+                onCheckedChange = {
+                    isComplete = it
+                    markComplete(item)
+                }
+            )
             Spacer(modifier = Modifier.size(16.dp))
             Column(modifier = Modifier.weight(1f)) {
                 Text(text = item.toDoTitle, style = MaterialTheme.typography.h6)
