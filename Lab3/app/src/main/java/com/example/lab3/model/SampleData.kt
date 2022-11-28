@@ -1,4 +1,4 @@
-package model
+package com.example.lab3.model
 
 val sampleBookData = listOf(
     ToDo("1", "Go shopping", "Today 12:50", true),
